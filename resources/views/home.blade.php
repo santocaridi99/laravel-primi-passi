@@ -10,7 +10,8 @@
     <h1>Hello laravel</h1>
     <ul>
         @foreach ($navbar as $value)
-        <li>{{$value}}</li>
+        {{-- stampo link e testo del data --}}
+        <li><a href="{{$value["link"]}}">{{$value["text"]}}</a></li>
         @endforeach
     </ul>
 </body>
