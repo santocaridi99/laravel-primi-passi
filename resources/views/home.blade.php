@@ -11,9 +11,10 @@
    <div class="navbar">
      <h1>Hello laravel</h1>
      <ul>
-        @foreach ($navbar as $value)
+        @foreach ($data as $value)
         {{-- stampo link e testo del data --}}
-        <li><a href="{{$value["link"]}}">{{$value["text"]}}</a></li>
+        {{-- con route mi cambia "rotta" dinamicamente con il cakore che passo nei link dell'array --}}
+        <li><a href="{{route($value["link"])}}">{{$value["text"]}}</a></li>
         @endforeach
      </ul>
     </div>

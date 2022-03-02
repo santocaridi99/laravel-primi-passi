@@ -12,48 +12,40 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+$data = [
+    // array di dati text quello che stampo nel link
+    // link mi servirà  per l'href
+    [
+        "text" => "Home",
+        "link" => "home"
+    ],
+    [
+        "text" => "Chi siamo",
+        "link" => "chi-siamo"
+    ],
+    [
+        "text" => "Contatti",
+        "link" => "contatti"
+    ],
+    [
+        "text" => "Network",
+        "link" => "network"
+    ],
+    [
+        "text" => "Shop",
+        "link" => "shop"
+    ],
+];
+// quando il routes  ritorna solo view posso usare Route::view
+// posso rinominare le rotte con il nome desiderato
+// farò in modo che queste rotte accettano in ingresso un array associativo che ha come valore il data
 // route della pagina principale
-Route::get('/', function () {
-    $data = [
-        // array di dati
-        [
-            "text" => "Home",
-            "link" => "/"
-        ],
-        [
-            "text" => "Chi siamo",
-            "link" => "/chi-siamo"
-        ],
-        [
-            "text" => "Contatti",
-            "link" => "/contatti"
-        ],
-        [
-            "text" => "Network",
-            "link" => "/network"
-        ],
-        [
-            "text" => "Shop",
-            "link" => "/shop"
-        ],
-    ];
-    // ritorna pure il contenuto di data
-    // passando un array associativo con valore navbar che corrisponde a contenuto data
-    return view('home',["navbar"=>$data]);
-});
+Route::view('/',"home",["data"=>$data])->name('home');
 // rotta pagina chi siamo
-Route::get('/chi-siamo', function () {
-    return view("chisiamo");
-});
+Route::view('/chi-siamo',"chisiamo",["data"=>$data])->name('chi-siamo');
 // rotta pagina contatti
-Route::get('/contatti', function () {
-    return view("contatti");
-});
+Route::view('/contatti',"contatti",["data"=>$data])->name('contatti');
 // rotta pagina network
-Route::get('/network', function () {
-    return view("network");
-});
+Route::view('/network',"network",["data"=>$data])->name('network');
 // rotta pagina Shop
-Route::get('/shop', function () {
-    return view("shop");
-});
+Route::view('/shop',"shop",["data"=>$data])->name('shop');
