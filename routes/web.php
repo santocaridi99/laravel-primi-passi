@@ -14,5 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $data = [
+        "navbar" => [
+            "Chi siamo",
+            "Contatti",
+            "Network",
+            "Shop"
+        ]
+    ];
+    return view('home', $data);
 });
